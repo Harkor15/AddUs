@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "900132865432",
+    "firebase_url": "https://addus-66971.firebaseio.com",
+    "project_id": "addus-66971",
+    "storage_bucket": "addus-66971.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900132865432:android:568c3a29985993b9",
+        "android_client_info": {
+          "package_name": "harkor.addus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "900132865432-qem07ab7lf56btjmfdqs48ud27fto0ml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "harkor.addus",
+            "certificate_hash": "cbe272eeb3df580efb722f7706fa3d83ed22a23a"
+          }
+        },
+        {
+          "client_id": "900132865432-kuq0fto46tq3i0tn0hbsbrgjlek0aksl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDKlNPluGvHGLVqg8KAg-xQYtWmRtdA-Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "900132865432-kuq0fto46tq3i0tn0hbsbrgjlek0aksl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
