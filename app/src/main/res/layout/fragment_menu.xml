@@ -39,14 +39,14 @@
             app:layout_constraintTop_toBottomOf="@+id/image_logo" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/image_sign_inout"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginBottom="16dp"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="w,1:1"
-            app:layout_constraintEnd_toStartOf="@+id/imageView6"
+            app:layout_constraintEnd_toStartOf="@+id/image_achievements"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -60,10 +60,10 @@
             app:layout_constraintDimensionRatio="w,1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imageView6" />
+            app:layout_constraintStart_toEndOf="@+id/image_achievements" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/image_achievements"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginBottom="16dp"
@@ -72,6 +72,6 @@
             app:layout_constraintDimensionRatio="w,1:1"
             app:layout_constraintEnd_toStartOf="@+id/imageView5"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imageView4" />
+            app:layout_constraintStart_toEndOf="@+id/image_sign_inout" />
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

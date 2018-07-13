@@ -12,169 +12,368 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="60"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="1dp"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.497">
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
             <ImageView
-                android:id="@+id/imageView20"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginTop="1dp"
-                android:src="@android:color/holo_green_dark"
-                app:layout_constraintBottom_toTopOf="@+id/imageView29"
-                app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView15" />
-
-            <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/image_puzzle11"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
                 android:src="@android:color/holo_green_dark"
-                app:layout_constraintBottom_toTopOf="@+id/imageView15"
+                app:layout_constraintBottom_toTopOf="@+id/image_puzzle21"
                 app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintEnd_toStartOf="@+id/image_puzzle12"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView15"
+                android:id="@+id/image_puzzle23"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle21"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle13"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle13"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle21"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/image_puzzle22"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle21"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle12"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle12"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle21"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/image_puzzle52"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle51"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle12"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle12"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle51" />
+
+            <ImageView
+                android:id="@+id/image_puzzle31"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toTopOf="@+id/image_puzzle41"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toStartOf="@+id/image_puzzle12"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_puzzle21" />
+
+            <ImageView
+                android:id="@+id/image_puzzle21"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="1dp"
                 android:src="@android:color/holo_green_dark"
-                app:layout_constraintBottom_toTopOf="@+id/imageView20"
+                app:layout_constraintBottom_toTopOf="@+id/image_puzzle31"
                 app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintEnd_toEndOf="@+id/imageView8"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle11"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+                app:layout_constraintTop_toBottomOf="@+id/image_puzzle11" />
 
             <ImageView
-                android:id="@+id/imageView25"
+                android:id="@+id/image_puzzle51"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginBottom="1dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
                 android:layout_marginTop="1dp"
                 android:src="@android:color/holo_green_dark"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintEnd_toStartOf="@+id/image_puzzle12"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView29" />
+                app:layout_constraintTop_toBottomOf="@+id/image_puzzle41" />
 
             <ImageView
-                android:id="@+id/imageView29"
+                android:id="@+id/image_puzzle41"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
                 android:layout_marginTop="1dp"
                 android:src="@android:color/holo_green_dark"
-                app:layout_constraintBottom_toTopOf="@+id/imageView25"
+                app:layout_constraintBottom_toTopOf="@+id/image_puzzle51"
                 app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintEnd_toStartOf="@+id/image_puzzle12"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView20" />
+                app:layout_constraintTop_toBottomOf="@+id/image_puzzle31" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/image_puzzle12"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
                 android:src="@android:color/holo_green_dark"
                 app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintEnd_toStartOf="@+id/image_puzzle13"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imageView8"
-                app:layout_constraintTop_toTopOf="@+id/imageView" />
+                app:layout_constraintStart_toEndOf="@+id/image_puzzle11"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle13" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/image_puzzle14"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
                 android:src="@android:color/holo_green_dark"
                 app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintEnd_toStartOf="@+id/imageView7"
+                app:layout_constraintEnd_toStartOf="@+id/image_puzzle15"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView" />
+                app:layout_constraintStart_toEndOf="@+id/image_puzzle13"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle13" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/image_puzzle13"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
                 android:src="@android:color/holo_green_dark"
                 app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                app:layout_constraintEnd_toStartOf="@+id/image_puzzle14"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/image_puzzle12"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/image_puzzle15"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:src="@android:color/holo_green_dark"
                 app:layout_constraintDimensionRatio="w,1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toTopOf="@+id/imageView" />
+                app:layout_constraintStart_toEndOf="@+id/image_puzzle14"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle13" />
 
             <ImageView
-                android:id="@+id/imageView30"
+                android:id="@+id/image_puzzle42"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:src="@android:color/holo_green_dark"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView20"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle41"
                 app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle12"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="@+id/imageView20" />
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle12"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle41" />
 
             <ImageView
-                android:id="@+id/imageView32"
+                android:id="@+id/image_puzzle32"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:src="@android:color/holo_green_dark"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle31"
                 app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle12"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="@+id/imageView15"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle12"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle31" />
+
+            <ImageView
+                android:id="@+id/image_puzzle33"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle32"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle13"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle13"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle32" />
+
+            <ImageView
+                android:id="@+id/image_puzzle44"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle43"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle14"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle14"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle43" />
+
+            <ImageView
+                android:id="@+id/image_puzzle34"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle33"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle14"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle14"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle33" />
+
+            <ImageView
+                android:id="@+id/image_puzzle54"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle53"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle14"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle14"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle53" />
+
+            <ImageView
+                android:id="@+id/image_puzzle24"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle21"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle14"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle14"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle21"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/image_puzzle55"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle15"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle15"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle54" />
+
+            <ImageView
+                android:id="@+id/image_puzzle45"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle44"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle15"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle15"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle44" />
+
+            <ImageView
+                android:id="@+id/image_puzzle35"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle34"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle15"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle15"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle34" />
+
+            <ImageView
+                android:id="@+id/image_puzzle25"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle21"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle15"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle15"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle21"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/image_puzzle43"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle42"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle13"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle13"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle42" />
+
+            <ImageView
+                android:id="@+id/image_puzzle53"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@android:color/holo_green_dark"
+                app:layout_constraintBottom_toBottomOf="@+id/image_puzzle52"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/image_puzzle13"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/image_puzzle13"
+                app:layout_constraintTop_toTopOf="@+id/image_puzzle52" />
         </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="245"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+        <ImageView
+            android:id="@+id/imageView48"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:src="@android:color/holo_orange_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

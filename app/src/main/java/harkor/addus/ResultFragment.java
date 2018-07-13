@@ -10,15 +10,14 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 
-public class GameFragment extends Fragment {
 
-    public GameFragment() {
-        // Required empty public constructor
-    }
+public class ResultFragment extends Fragment {
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_game, container, false);
+        View view=inflater.inflate(R.layout.fragment_result, container, false);
         ButterKnife.bind(this,view);
         return view;
     }
