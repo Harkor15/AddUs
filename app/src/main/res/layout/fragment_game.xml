@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".GameFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".view.GameFragment">
+
+    <data>
+         <import type="android.support.v4.app.Fragment"/>
+        <import type="android.view.View"/>
+
+        <variable
+            name="gameViewModel"
+            type="harkor.addus.viewmodel.GameViewModel" />
+    </data>
+
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/text_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -35,15 +43,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/text_time">
 
             <ImageView
                 android:id="@+id/image_puzzle11"
+                android:src="@android:color/holo_green_dark"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
-                android:src="@android:color/holo_green_dark"
+                android:onClick="@{(v) -> gameViewModel.onClickItem(v,1,1)}"
+                app:load_image="@{1}"
                 app:layout_constraintBottom_toTopOf="@+id/image_puzzle21"
                 app:layout_constraintDimensionRatio="w,1:1"
                 app:layout_constraintEnd_toStartOf="@+id/image_puzzle12"
@@ -376,4 +386,4 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
-</FrameLayout>
+</layout>
