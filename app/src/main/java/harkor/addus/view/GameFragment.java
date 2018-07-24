@@ -25,7 +25,7 @@ public class GameFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //View view=inflater.inflate(R.layout.fragment_game, container, false);
-        FragmentGameBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_game, container, false);
+        FragmentGameBinding binding = DataBindingUtil.inflate(inflater,R.layout.fragment_game,container,false);
         View view = binding.getRoot();
         //here data must be an instance of the class MarsDataProvider
         //binding.setMarsdata(data);
@@ -33,9 +33,10 @@ public class GameFragment extends Fragment {
         //FragmentGameBinding
         //GameFragmentBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         ButterKnife.bind(this,view);
-        binding.setGameViewModel(gameViewModel);
-        gameViewModel= ViewModelProviders.of(getActivity()).get(GameViewModel.class);
+        gameViewModel= GameViewModel.getInstance();
         gameViewModel.init();
+        binding.setGameViewModel(gameViewModel);
+
 ///<import type="android.support.v4.app.Fragment"/>
         return view;
     }

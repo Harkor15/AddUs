@@ -1,6 +1,7 @@
 package harkor.addus.model;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import java.util.Random;
 
@@ -10,12 +11,13 @@ public class Square {
     public int color;
     public int value;
     public int drawable;
-    public int drawableClicked;
+    public boolean clicked;
     private Random random=new Random();
 
     public Square(){
         color=random.nextInt(2)+1;
         value=1;
+        clicked=false;
         setImage();
     }
 
@@ -31,31 +33,49 @@ public class Square {
         she.setImage();
         he.setImage();
     }
-    private void setImage(){
+     public void setImage(){
         switch(value){
             case 1: if(color==1){
-                drawable= R.drawable.square11;
-                //drawableClicked= R.drawable.square_clicked11;
+                if(clicked){
+                    drawable= R.drawable.square11c;
+                }else{
+                    drawable= R.drawable.square11;
+                }
             }else{
-                drawable= R.drawable.square12;
-                //drawableClicked= R.drawable.square_clicked12;
+                if(clicked){
+                    drawable= R.drawable.square12c;
+                }else{
+                    drawable= R.drawable.square12;
+                }
             }break;
 
             case 2: if(color==1){
-                //drawable= R.drawable.square21;
-                //drawableClicked= R.drawable.square_clicked21;
+                if(clicked){
+                    drawable= R.drawable.square21c;
+                }else{
+                    drawable= R.drawable.square21;
+                }
             }else{
-                //drawable= R.drawable.square22;
-                //drawableClicked= R.drawable.square_clicked22;
+                if(clicked){
+                    drawable= R.drawable.square22c;
+                }else{
+                    drawable= R.drawable.square22;
+                }
             }break;
-
             case 4: if(color==1){
-                //drawable= R.drawable.square41;
-                //drawableClicked= R.drawable.square_clicked41;
+                if(clicked){
+                    drawable= R.drawable.square41c;
+                }else{
+                    drawable= R.drawable.square41;
+                }
             }else{
-                //drawable= R.drawable.square42;
-                //drawableClicked= R.drawable.square_clicked42;
+                if(clicked){
+                    drawable= R.drawable.square42c;
+                }else{
+                    drawable= R.drawable.square42;
+                }
             }break;
         }
+        Log.i("getImage","check");
     }
 }
