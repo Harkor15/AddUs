@@ -10,6 +10,7 @@ import android.databinding.ObservableArrayList;
 import android.databinding.ObservableArrayMap;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.IdRes;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
@@ -20,14 +21,17 @@ import android.widget.Toast;
 import com.google.android.gms.games.Game;
 
 import harkor.addus.BR;
+import harkor.addus.MenuFragment;
 import harkor.addus.R;
 import harkor.addus.model.Square;
 
 public class GameViewModel extends BaseObservable {
     public static ObservableArrayList<Square> squares;
     public int points;
-    public String sPoints;
-
+    public String pointext;
+    private Logic logic=new Logic();
+    public int time;
+    public String timer;
 
 
     private GameViewModel(){}
@@ -35,18 +39,24 @@ public class GameViewModel extends BaseObservable {
         return SingletonHolder.INSTANCE;
     }
 
+
+
+
     public void setPoints(int points) {
         this.points = points;
-        setsPoints(""+points);
+        setPointext(""+points);
     }
     @Bindable
-    public String getsPoints() {
-        return sPoints;
+    public String getPointext() {
+        return pointext;
     }
-    public void setsPoints(String sPoints) {
-        this.sPoints = sPoints;
-        Log.i("Info sPoints",sPoints);
-        notifyPropertyChanged(BR.sPoints);
+    public void setPointext(String sPoints) {
+        pointext = sPoints;
+        Log.i("Info pointext",pointext);
+        notifyPropertyChanged(BR.pointext);
+    }
+    public void addPoints(int value){
+        setPoints(points+value);
     }
 
     @Bindable
@@ -58,10 +68,25 @@ public class GameViewModel extends BaseObservable {
         GameViewModel.squares.get(doubled).addIs(GameViewModel.squares.get(doubled),GameViewModel.squares.get(generated));
         notifyPropertyChanged(BR.squares);
     }
-
-    public Square setterSquares(int id){
-        return squares.get(id);
+    public void setterSquare(int id,Square square){
+        squares.set(id,square);
     }
+
+
+
+    @Bindable
+    public String getTimer(){
+        return timer;
+    }
+    public void setTimer(String s){
+        timer=s;
+        notifyPropertyChanged(BR.timer);
+    }
+    public void setTime(int t){
+        time=t;
+        setTimer(time+"");
+    }
+
 
 
     public void init(){
@@ -70,12 +95,22 @@ public class GameViewModel extends BaseObservable {
             squares.add(new Square());
         }
         setPoints(0);
+        setTime(66);
     }
 
     public void onClickItem(View v,int id){
         Log.i("Info clicked","id: "+id);
-
+        logic.click(id);
         //setSquares(row,col);
+    }
+    public void onBackClick(View v){
+        Log.i("Back clicked","True");
+        /* TODO:back button!
+        MenuFragment newFragment = new MenuFragment ();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame, newFragment);
+        transaction.commit();
+        */
     }
 
 

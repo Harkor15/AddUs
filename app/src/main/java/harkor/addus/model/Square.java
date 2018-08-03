@@ -75,6 +75,45 @@ public class Square {
                     drawable= R.drawable.square42;
                 }
             }break;
+            case 8: if(color==1){
+                if(clicked){
+                    drawable= R.drawable.square81c;
+                }else{
+                    drawable= R.drawable.square81;
+                }
+            }else{
+                if(clicked){
+                    drawable= R.drawable.square82c;
+                }else{
+                    drawable= R.drawable.square82;
+                }
+            }break;
+            case 16: if(color==1){
+                if(clicked){
+                    drawable= R.drawable.square161c;
+                }else{
+                    drawable= R.drawable.square161;
+                }
+            }else{
+                if(clicked){
+                    drawable= R.drawable.square162c;
+                }else{
+                    drawable= R.drawable.square162;
+                }
+            }break;
+            case 32: if(color==1){
+                if(clicked){
+                    drawable= R.drawable.square321c;
+                }else{
+                    drawable= R.drawable.square321;
+                }
+            }else{
+                if(clicked){
+                    drawable= R.drawable.square322c;
+                }else{
+                    drawable= R.drawable.square322;
+                }
+            }break;
         }
         Log.i("getImage","check");
     }

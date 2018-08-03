@@ -5,4 +5,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="two_tap_to_exit">Please click BACK again to exit</string>
     <string name="signin_other_error">Connection error</string>
+    <string name="back">Back</string>
 </resources>

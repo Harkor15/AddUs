@@ -24,28 +24,14 @@ public class GameFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //View view=inflater.inflate(R.layout.fragment_game, container, false);
         FragmentGameBinding binding = DataBindingUtil.inflate(inflater,R.layout.fragment_game,container,false);
         View view = binding.getRoot();
-        //here data must be an instance of the class MarsDataProvider
-        //binding.setMarsdata(data);
-
-        //FragmentGameBinding
-        //GameFragmentBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         ButterKnife.bind(this,view);
         gameViewModel= GameViewModel.getInstance();
         gameViewModel.init();
         binding.setGameViewModel(gameViewModel);
 
-///<import type="android.support.v4.app.Fragment"/>
         return view;
     }
-    public void setTime(int seconds){
-        textTime.setText(seconds+"");
-    }
-    private void initDataBinding(){
-
-    }
-
 
 }
