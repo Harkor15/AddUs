@@ -87,7 +87,10 @@ public class GameViewModel extends BaseObservable {
         setTimer(time+"");
     }
 
-
+    public void timeout(){
+        Log.i("Timeout","TRUE");
+        //TODO: Change fragment -> gameover
+    }
 
     public void init(){
         squares=new ObservableArrayList<>();
@@ -95,7 +98,7 @@ public class GameViewModel extends BaseObservable {
             squares.add(new Square());
         }
         setPoints(0);
-        setTime(66);
+        setTime(60);
     }
 
     public void onClickItem(View v,int id){
@@ -112,7 +115,9 @@ public class GameViewModel extends BaseObservable {
         transaction.commit();
         */
     }
-
+    public void nextSecond(){
+        setTime(--time);
+    }
 
     @BindingAdapter("load_image")
     public static void loadImage(ImageView view,Square square) {

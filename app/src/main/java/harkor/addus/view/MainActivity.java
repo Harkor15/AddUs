@@ -1,4 +1,4 @@
-package harkor.addus;
+package harkor.addus.view;
 
 
 
@@ -24,15 +24,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesClient;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import harkor.addus.MenuFragment;
+import harkor.addus.R;
 
 
-public class MainActivity extends AppCompatActivity implements MenuFragment.OnButtonClickListener{
+public class MainActivity extends AppCompatActivity implements MenuFragment.OnButtonClickListener {
     private GoogleSignInClient mGoogleSignInClient;
     GoogleSignInAccount signedInAccount;
     private static final int RC_SIGN_IN = 9876;
