@@ -403,8 +403,8 @@
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:src="@android:color/holo_orange_light"
             android:onClick="@{(v) -> gameViewModel.onBackClick(v)}"
+            android:src="@drawable/button_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

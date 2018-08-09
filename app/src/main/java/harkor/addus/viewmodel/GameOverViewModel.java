@@ -1,5 +1,6 @@
 package harkor.addus.viewmodel;
 
+import android.app.Fragment;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
@@ -23,6 +24,7 @@ public class GameOverViewModel extends BaseObservable{
         this.points = points;
         notifyPropertyChanged(BR.points);
     }
+
 
 
     private static class SingletonHolder {

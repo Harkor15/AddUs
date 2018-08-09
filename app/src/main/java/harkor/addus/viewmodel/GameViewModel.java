@@ -34,6 +34,7 @@ public class GameViewModel extends BaseObservable {
     public String timer;
 
 
+
     private GameViewModel(){}
     public static GameViewModel getInstance(){
         return SingletonHolder.INSTANCE;

@@ -6,6 +6,7 @@ package harkor.addus.view;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +32,8 @@ import harkor.addus.MenuFragment;
 import harkor.addus.R;
 
 
-public class MainActivity extends AppCompatActivity implements MenuFragment.OnButtonClickListener {
+
+public class MainActivity extends AppCompatActivity implements MenuFragment.OnButtonClickListener{
     private GoogleSignInClient mGoogleSignInClient;
     GoogleSignInAccount signedInAccount;
     private static final int RC_SIGN_IN = 9876;

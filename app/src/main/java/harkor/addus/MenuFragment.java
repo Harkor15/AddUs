@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import harkor.addus.view.GameFragment;
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends Fragment{
     //private static final int RC_ACHIEVEMENT_UI = 9003;
     //private static final int RC_SIGN_IN = 9898;
     GoogleSignInClient mGoogleSignInClient;
@@ -78,5 +78,9 @@ public class MenuFragment extends Fragment {
     private boolean isSignedIn() {
         return GoogleSignIn.getLastSignedInAccount(getContext()) != null;
     }
+
+    ///////////////////////////////////////////////FRAGMENTS IMPLEMENTATION
+
+
 
 }
