@@ -15,6 +15,7 @@ import harkor.addus.BR;
 import harkor.addus.R;
 import harkor.addus.interfaces.IFragMenager;
 import harkor.addus.interfaces.IGame;
+import harkor.addus.interfaces.ISoundsPlay;
 import harkor.addus.model.Square;
 import harkor.addus.view.MainActivity;
 
@@ -23,15 +24,17 @@ public class GameViewModel extends BaseObservable implements IGame{
     public static ObservableArrayList<Square> squares;
     public int points;
     public String pointext;
-    private Logic logic=new Logic(this);
     public int time;
     public String timer;
     boolean backClickTwice=false;
+    ISoundsPlay iSoundsPlay;
+    private Logic logic;
 
 
-
-    public GameViewModel(IFragMenager iFragMenager){
+    public GameViewModel(IFragMenager iFragMenager,ISoundsPlay iSoundsPlay){
         this.iFragMenager=iFragMenager;
+        this.iSoundsPlay=iSoundsPlay;
+        logic=new Logic(this,iSoundsPlay);
     }
 
     public void setPoints(int points) {
@@ -115,6 +118,9 @@ public class GameViewModel extends BaseObservable implements IGame{
     public void cancelTimer(){
         logic.count.cancel();
     }
+
+
+
     /////////INTERFACE IGAME IMPLEMEMTATION
     @Override
     public void setterSquare(int id,Square square){

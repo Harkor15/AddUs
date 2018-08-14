@@ -6,10 +6,12 @@ import android.util.Log;
 import java.util.Random;
 
 import harkor.addus.interfaces.IGame;
+import harkor.addus.interfaces.ISoundsPlay;
 import harkor.addus.model.Square;
 
 public class Logic{
     IGame iGame;
+    ISoundsPlay iSoundsPlay;
     Random random=new Random();
     boolean isClicked=false;
     Square clicked;
@@ -30,9 +32,15 @@ public class Logic{
         }
     };
 
-    public Logic(IGame igame){
-        this.iGame=igame;
+    public Logic(IGame iGame,ISoundsPlay iSoundsPlay){
+        this.iGame=iGame;
+        this.iSoundsPlay=iSoundsPlay;
         count.start();
+        if(iSoundsPlay==null){
+            Log.i("AddUs","nullSoundsPlayInterface");
+        }else{
+            Log.i("AddUs","ISOUNDS OK!");
+        }
 
     }
 
@@ -44,18 +52,18 @@ public class Logic{
                 isClicked=false;
                 square.clicked=false;
                 square.setImage();
-                //Log.i("try","hard try");
-                iGame.setterSquare(id,square); //?!?!?!?!?!?!?!?!
+                iGame.setterSquare(id,square);
             }else if(square.canBeACouple(clicked,square)){
                 iGame.setterSquare(id,dualX(square));
                 iGame.setterSquare(clickedId,resetX(clicked));
                 isClicked=false;
+                iSoundsPlay.playGood();
             }else{
-                Log.i("can","NO!!!!");
                 isClicked=false;
                 clicked.clicked=false;
                 clicked.setImage();
                 iGame.setterSquare(clickedId,clicked);
+                iSoundsPlay.playBad();
             }
 
         }else{
