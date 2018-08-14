@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".view.ResultFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <data>
+        <import type="android.support.v4.app.Fragment"/>
+        <import type="android.view.View"/>
+
+        <variable
+            name="resultViewModel"
+            type="harkor.addus.viewmodel.ResultViewModel" />
+    </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,7 +37,7 @@
             android:id="@+id/text_result_rs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="246"
+            android:text="@{resultViewModel.points}"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/image_background_rs"
             app:layout_constraintEnd_toEndOf="@+id/image_background_rs"
@@ -45,6 +51,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:src="@android:color/holo_purple"
+            android:onClick="@{(v) -> resultViewModel.toMenu(v)}"
             app:layout_constraintBottom_toBottomOf="@+id/image_background_rs"
             app:layout_constraintDimensionRatio="3:1"
             app:layout_constraintStart_toStartOf="@+id/image_background_rs"
@@ -57,6 +64,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:src="@android:color/holo_purple"
+            android:onClick="@{(v) -> resultViewModel.toGame(v)}"
             app:layout_constraintBottom_toBottomOf="@+id/image_background_rs"
             app:layout_constraintDimensionRatio="3:1"
             app:layout_constraintEnd_toEndOf="@+id/image_background_rs"
@@ -65,4 +73,4 @@
 
     </android.support.constraint.ConstraintLayout>
 
-</FrameLayout>
+</layout>

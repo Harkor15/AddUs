@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import harkor.addus.R;
 import harkor.addus.databinding.FragmentGameBinding;
+import harkor.addus.interfaces.IFragMenager;
 import harkor.addus.viewmodel.GameViewModel;
 
 public class GameFragment extends Fragment {
@@ -22,16 +23,26 @@ public class GameFragment extends Fragment {
     TextView textTime;
     GameViewModel gameViewModel;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        FragmentGameBinding binding = DataBindingUtil.inflate(inflater,R.layout.fragment_game,container,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        FragmentGameBinding binding = DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_game,
+                container,
+                false
+        );
         View view = binding.getRoot();
         ButterKnife.bind(this,view);
-        gameViewModel= GameViewModel.getInstance();
+        IFragMenager iFragMenager=(IFragMenager)getActivity();
+        gameViewModel= new GameViewModel(iFragMenager);
         gameViewModel.init();
         binding.setGameViewModel(gameViewModel);
 
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        gameViewModel.cancelTimer();
+        super.onDestroy();
+    }
 }
