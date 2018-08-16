@@ -64,6 +64,7 @@ public class Logic{
                 clicked.setImage();
                 iGame.setterSquare(clickedId,clicked);
                 iSoundsPlay.playBad();
+                iGame.addPoints(-1);
             }
 
         }else{

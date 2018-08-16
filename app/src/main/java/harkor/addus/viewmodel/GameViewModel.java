@@ -137,7 +137,14 @@ public class GameViewModel extends BaseObservable implements IGame{
     }
     @Override
     public void addPoints(int value){
-        setPoints(points+value);
+        if(value<0){
+            if(points>=1){
+                setPoints(points+value);
+            }
+        }else{
+            setPoints(points+value);
+        }
+
     }
     @Override
     public void timeout(){

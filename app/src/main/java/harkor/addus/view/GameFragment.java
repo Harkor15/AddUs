@@ -59,6 +59,7 @@ public class GameFragment extends Fragment implements ISoundsPlay{
     public void onPause() {
         gameViewModel.cancelTimer();
         super.onPause();
+        Log.i("AddUs","onPause");
     }
 
     @Override
@@ -67,6 +68,7 @@ public class GameFragment extends Fragment implements ISoundsPlay{
             iFragMenager.goResult(gameViewModel.points);
         }else{
         created=false;
+            Log.i("AddUs","onResume");
     }
 
         super.onResume();

@@ -26,7 +26,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
-            android:src="@android:color/holo_blue_dark"
+            android:src="@drawable/result_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="2:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{resultViewModel.points}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/image_background_rs"
             app:layout_constraintEnd_toEndOf="@+id/image_background_rs"
             app:layout_constraintStart_toStartOf="@+id/image_background_rs"
@@ -50,10 +52,10 @@
             android:layout_height="0dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:src="@android:color/holo_purple"
             android:onClick="@{(v) -> resultViewModel.toMenu(v)}"
+            android:src="@drawable/button_background"
             app:layout_constraintBottom_toBottomOf="@+id/image_background_rs"
-            app:layout_constraintDimensionRatio="3:1"
+            app:layout_constraintDimensionRatio="2:1"
             app:layout_constraintStart_toStartOf="@+id/image_background_rs"
             app:layout_constraintTop_toBottomOf="@+id/image_background_rs" />
 
@@ -63,13 +65,47 @@
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:src="@android:color/holo_purple"
             android:onClick="@{(v) -> resultViewModel.toGame(v)}"
+            android:src="@drawable/button_background"
             app:layout_constraintBottom_toBottomOf="@+id/image_background_rs"
-            app:layout_constraintDimensionRatio="3:1"
+            app:layout_constraintDimensionRatio="2:1"
             app:layout_constraintEnd_toEndOf="@+id/image_background_rs"
             app:layout_constraintTop_toBottomOf="@+id/image_background_rs"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/menu"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            app:layout_constraintBottom_toBottomOf="@+id/image_back_rs"
+            app:layout_constraintEnd_toEndOf="@+id/image_back_rs"
+            app:layout_constraintStart_toStartOf="@+id/image_back_rs"
+            app:layout_constraintTop_toTopOf="@+id/image_back_rs" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/restart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            app:layout_constraintBottom_toBottomOf="@+id/image_again_rs"
+            app:layout_constraintEnd_toEndOf="@+id/image_again_rs"
+            app:layout_constraintStart_toStartOf="@+id/image_again_rs"
+            app:layout_constraintTop_toTopOf="@+id/image_again_rs" />
 
     </android.support.constraint.ConstraintLayout>
 

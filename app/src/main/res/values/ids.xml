@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Google Play game services IDs.
+Save this file as res/values/games-ids.xml in your project.
+-->
+<resources>
+    <!-- app_id -->
+    <string name="app_id" translatable="false">1022128350838</string>
+    <!-- package_name -->
+    <string name="package_name" translatable="false">harkor.addus</string>
+    <!-- leaderboard Standard mode -->
+    <string name="leaderboard_standard_mode" translatable="false">CgkI9szj3N8dEAIQAw</string>
+</resources>
