@@ -19,6 +19,23 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/image_button_result"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:onClick="@{(v) -> menuViewModel.onClickResult(v)}"
+            android:src="@drawable/button_menu"
+            app:layout_constraintDimensionRatio="6:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_button_start" />
+
+        <ImageView
             android:id="@+id/image_logo"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -29,14 +46,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/image_button1"
+            android:id="@+id/image_button_start"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:onClick="@{(v) -> menuViewModel.onClickGame(v)}"
             android:src="@drawable/button_menu"
             app:layout_constraintDimensionRatio="6:1"
@@ -50,7 +67,8 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginBottom="16dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@{menuViewModel.signed?@drawable/log_out:@drawable/log_in}"
+            android:onClick="@{(v) -> menuViewModel.onClickLogin(v)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="w,1:1"
             app:layout_constraintEnd_toStartOf="@+id/image_achievements"
@@ -63,6 +81,7 @@
             android:layout_height="75dp"
             android:layout_marginBottom="16dp"
             android:src="@mipmap/ic_launcher"
+            android:onClick="@{(v) -> menuViewModel.onClickRanking(v)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="w,1:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +101,7 @@
             app:layout_constraintStart_toEndOf="@+id/image_sign_inout" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/text_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -90,9 +109,27 @@
             android:text="@string/start_game"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/image_button1"
+            app:layout_constraintBottom_toBottomOf="@+id/image_button_start"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/image_button1" />
+            app:layout_constraintTop_toTopOf="@+id/image_button_start" />
+
+        <TextView
+            android:id="@+id/text_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/my_best"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/image_button_result"
+            app:layout_constraintEnd_toEndOf="@+id/image_button_result"
+            app:layout_constraintStart_toStartOf="@+id/image_button_result"
+            app:layout_constraintTop_toTopOf="@+id/image_button_result" />
     </android.support.constraint.ConstraintLayout>
 </layout>

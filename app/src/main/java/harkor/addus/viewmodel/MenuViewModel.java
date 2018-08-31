@@ -1,32 +1,34 @@
 package harkor.addus.viewmodel;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
+import harkor.addus.R;
 import harkor.addus.interfaces.IFragMenager;
 
 public class MenuViewModel extends BaseObservable{
-IFragMenager iFragMenager;
+static IFragMenager iFragMenager;
+public boolean signed;
 
     public MenuViewModel(IFragMenager iFragMenager){
         this.iFragMenager= iFragMenager;
+        signed=iFragMenager.isSignedIn();
     }
-    public void onClickGame(View view){
-        Log.i("ML","GameClick");
+    public void onClickGame(View v){
         iFragMenager.goGame();
-        //MainViewModel.iFragMenager.goGame();
     }
-    /*
-     public static MenuViewModel getInstance(){
-         return SingletonHolder.INSTANCE;
-
+    public void onClickLogin(View v){
+        iFragMenager.logButtonClick();
     }
-
-
-    private static class SingletonHolder {
-        private static final MenuViewModel INSTANCE = new MenuViewModel();
+    public void onClickRanking(View v){
+        iFragMenager.showRanking();
+    }
+    public void onClickResult(View v){
+        iFragMenager.showResult();
     }
 
-    */
 }
