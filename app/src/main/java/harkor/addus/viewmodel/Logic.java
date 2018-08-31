@@ -5,10 +5,13 @@ import android.util.Log;
 
 import java.util.Random;
 
+import harkor.addus.interfaces.IGame;
+import harkor.addus.interfaces.ISoundsPlay;
 import harkor.addus.model.Square;
 
-public class Logic {
-    GameViewModel gameViewModel=GameViewModel.getInstance();
+public class Logic{
+    IGame iGame;
+    ISoundsPlay iSoundsPlay;
     Random random=new Random();
     boolean isClicked=false;
     Square clicked;
@@ -17,8 +20,7 @@ public class Logic {
 
         @Override
         public void onTick(long l) {
-            if(gameViewModel==null){gameViewModel=GameViewModel.getInstance();}
-            //gameViewModel.setTime(time);
+            //if(gameViewModel==null){gameViewModel=GameViewModel.getInstance();}
             Log.i("Tick"," ");
             setTime();
         }
@@ -26,37 +28,43 @@ public class Logic {
         @Override
         public void onFinish() {
         Log.i("Game Over!","yes");
-        gameViewModel.timeout();
+        iGame.timeout();
         }
     };
 
-    public Logic(){
-        Log.i("Logging","Instacne");
-
+    public Logic(IGame iGame,ISoundsPlay iSoundsPlay){
+        this.iGame=iGame;
+        this.iSoundsPlay=iSoundsPlay;
         count.start();
+        if(iSoundsPlay==null){
+            Log.i("AddUs","nullSoundsPlayInterface");
+        }else{
+            Log.i("AddUs","ISOUNDS OK!");
+        }
 
     }
 
     public void click(int id){
         Log.i("Clicked:",id+"");
-        Square square=gameViewModel.squares.get(id);
+        Square square=iGame.getSquare(id);
         if(isClicked){
             if(clickedId==id){
                 isClicked=false;
                 square.clicked=false;
                 square.setImage();
-                //Log.i("try","hard try");
-                gameViewModel.setterSquare(id,square); //?!?!?!?!?!?!?!?!
+                iGame.setterSquare(id,square);
             }else if(square.canBeACouple(clicked,square)){
-                gameViewModel.setterSquare(id,dualX(square));
-                gameViewModel.setterSquare(clickedId,resetX(clicked));
+                iGame.setterSquare(id,dualX(square));
+                iGame.setterSquare(clickedId,resetX(clicked));
                 isClicked=false;
+                iSoundsPlay.playGood();
             }else{
-                Log.i("can","NO!!!!");
                 isClicked=false;
                 clicked.clicked=false;
                 clicked.setImage();
-                gameViewModel.setterSquare(clickedId,clicked);
+                iGame.setterSquare(clickedId,clicked);
+                iSoundsPlay.playBad();
+                iGame.addPoints(-1);
             }
 
         }else{
@@ -65,7 +73,7 @@ public class Logic {
             clickedId=id;
             square.clicked=true;
             square.setImage();
-            gameViewModel.setterSquare(id,square);
+            iGame.setterSquare(id,square);
 
         }
     }
@@ -84,11 +92,12 @@ public class Logic {
         return square;
     }
     void addPoints(int value){
-        Log.i("Points+",value+"");
-        gameViewModel.addPoints(value);
+        iGame.addPoints(value);
     }
+
     void setTime(){
-        gameViewModel.nextSecond();
+        iGame.nextSecond();
     }
+
 
 }
