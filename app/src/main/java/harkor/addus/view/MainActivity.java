@@ -48,9 +48,10 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         ButterKnife.bind(this);
         mGoogleSignInClient = GoogleSignIn.getClient(this,
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN).build());
-
+        if(!isSignedIn()){
+            startSignInIntent();
+        }
         goMenu();
-        Log.i("Addus logedin?",isSignedIn()+"");
     }
     @Override
     public boolean isSignedIn() {
@@ -59,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
 
     @Override
     public void logButtonClick() {
-        //TODO: LOG IN OR LOG OUT
         if(isSignedIn()){//LOG OUT
             GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
                     GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
 
     @Override
     public void showRanking() {
-        //TODO: Ranking show
     }
 
     private void signInSilently() {
@@ -123,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
-                // The signed in account is stored in the result.
                 signedInAccount = result.getSignInAccount();
                 GamesClient gamesClient = Games.getGamesClient(MainActivity.this,
                         GoogleSignIn.getLastSignedInAccount(getApplicationContext()));
@@ -133,7 +131,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
                 String message = result.getStatus().getStatusMessage();
                 if (message == null || message.isEmpty()) {
                     message = getString(R.string.signin_other_error);
-                    //Log.i("addus",result+"");
                 }
                 new AlertDialog.Builder(this).setMessage(message)
                         .setNeutralButton(android.R.string.ok, null).show();
@@ -141,11 +138,9 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         }
     }
     void logedIn(){
-        //imageView.setImageResource(R.drawable.log_out);
         menuFragment.setForIn();
     }
     void logedOut(){
-        //imageView.setImageResource(R.drawable.log_in);
         menuFragment.setForOut();
     }
 
