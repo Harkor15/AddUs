@@ -8,4 +8,5 @@ public interface IFragMenager {
     void logButtonClick();
     void showRanking();
     void showResult();
+    void showAchievements();
 }

@@ -27,6 +27,9 @@ public boolean signed;
     public void onClickRanking(View v){
         iFragMenager.showRanking();
     }
+    public void onClickAchievements(View v){
+        iFragMenager.showAchievements();
+    }
     public void onClickResult(View v){
         iFragMenager.showResult();
     }

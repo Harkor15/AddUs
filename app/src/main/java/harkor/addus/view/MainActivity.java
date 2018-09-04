@@ -23,6 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import butterknife.ButterKnife;
@@ -35,6 +36,8 @@ import harkor.addus.interfaces.IFragMenager;
 public class MainActivity extends AppCompatActivity implements IFragMenager{
     boolean doubleBackToExitPressedOnce = false;
     final int RC_SIGN_IN=9876;
+    private static final int RC_ACHIEVEMENT_UI = 9003;
+    private static final int RC_LEADERBOARD_UI = 9004;
     private GoogleSignInClient mGoogleSignInClient;
     GoogleSignInAccount signedInAccount;
     MenuFragment menuFragment;
@@ -52,7 +55,16 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
             startSignInIntent();
         }
         goMenu();
+
     }
+    private void leaderboardAndAchevemenents(){
+        SharedP sharedP=new SharedP(getApplicationContext());
+        int best=sharedP.getBest();
+        Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                .submitScore(getString(R.string.leaderboard_standard_mode), best);
+    }
+
+
     @Override
     public boolean isSignedIn() {
         return GoogleSignIn.getLastSignedInAccount(this) != null;
@@ -77,9 +89,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
 
     }
 
-    @Override
-    public void showRanking() {
-    }
 
     private void signInSilently() {
         GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
@@ -104,6 +113,10 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     protected void onResume() {
         super.onResume();
         signInSilently();
+        if(isSignedIn()){
+            leaderboardAndAchevemenents();
+        }
+
     }
     private void startSignInIntent() {
         GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
@@ -196,4 +209,37 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         //Toast.makeText(getApplicationContext(),res+"",Toast.LENGTH_SHORT);
         menuFragment.showbestResult(res);
     }
+
+    @Override
+    public void showAchievements() {
+        if (isSignedIn()){
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .getAchievementsIntent()
+                    .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                        @Override
+                        public void onSuccess(Intent intent) {
+                            startActivityForResult(intent, RC_ACHIEVEMENT_UI);
+                        }
+                    });
+        }
+    }
+
+    @Override
+    public void showRanking() {
+        if(isSignedIn()){
+            showLeaderboard();
+        }
+    }
+    private void showLeaderboard() {
+        Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                .getLeaderboardIntent(getString(R.string.leaderboard_standard_mode))
+                .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                    @Override
+                    public void onSuccess(Intent intent) {
+                        Log.d("add us","succes");
+                        startActivityForResult(intent, RC_LEADERBOARD_UI);
+                    }
+                });
+    }
+
 }
