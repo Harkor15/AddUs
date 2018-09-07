@@ -19,7 +19,7 @@ public boolean signed;
         signed=iFragMenager.isSignedIn();
     }
     public void onClickGame(View v){
-        iFragMenager.goGame();
+        iFragMenager.goGame(false);
     }
     public void onClickLogin(View v){
         iFragMenager.logButtonClick();

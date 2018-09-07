@@ -95,7 +95,7 @@ public class GameViewModel extends BaseObservable implements IGame{
     public void onBackClick(View v){
         if (backClickTwice) {
             logic.count.cancel();
-            iFragMenager.goMenu();
+            iFragMenager.goMenu(false);
         }
         this.backClickTwice = true;
         //Toast.makeText(this, R.string.two_tap_to_exit, Toast.LENGTH_SHORT).show();

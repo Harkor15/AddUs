@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     private GoogleSignInClient mGoogleSignInClient;
     GoogleSignInAccount signedInAccount;
     MenuFragment menuFragment;
+    Boolean played=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         if(!isSignedIn()){
             startSignInIntent();
         }
-        goMenu();
+        goMenu(false);
 
     }
     private void leaderboardAndAchevemenents(){
@@ -62,6 +63,35 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         int best=sharedP.getBest();
         Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                 .submitScore(getString(R.string.leaderboard_standard_mode), best);
+        if(played){
+            played=false;
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .unlock(getString(R.string.achievement_first_play));
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .increment(getString(R.string.achievement_10_games),1);
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .increment(getString(R.string.achievement_50_games),1);
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .increment(getString(R.string.achievement_100_games),1);
+        }
+        if(best>=400){
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .unlock(getString(R.string.achievement_400_points));
+            if(best>=500){
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                        .unlock(getString(R.string.achievement_500_points));
+                if(best>=600){
+                    Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                            .unlock(getString(R.string.achievement_600_points));
+                    if(best>=700){
+                        Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                                .unlock(getString(R.string.achievement_700_points));
+                    }
+                }
+            }
+        }
+
+
     }
 
 
@@ -103,8 +133,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
                             GamesClient gamesClient = Games.getGamesClient(MainActivity.this, GoogleSignIn.getLastSignedInAccount(getApplicationContext()));
                             gamesClient.setViewForPopups(findViewById(R.id.gps_popup));
                             logedIn();
-                        } else {
-
                         }
                     }
                 });
@@ -113,9 +141,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     protected void onResume() {
         super.onResume();
         signInSilently();
-        if(isSignedIn()){
-            leaderboardAndAchevemenents();
-        }
 
     }
     private void startSignInIntent() {
@@ -176,11 +201,15 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     }
 
     @Override
-    public void goMenu() {
+    public void goMenu(Boolean play) {
         menuFragment = new MenuFragment ();
+        played=play;
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame, menuFragment);
         transaction.commit();
+        if(isSignedIn()){
+            leaderboardAndAchevemenents();
+        }
     }
 
     @Override
@@ -195,7 +224,9 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     }
 
     @Override
-    public void goGame() {
+    public void goGame(Boolean play) {
+        played=play;
+        leaderboardAndAchevemenents();
         GameFragment newFragment = new GameFragment ();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame, newFragment);
@@ -236,7 +267,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
                 .addOnSuccessListener(new OnSuccessListener<Intent>() {
                     @Override
                     public void onSuccess(Intent intent) {
-                        Log.d("add us","succes");
                         startActivityForResult(intent, RC_LEADERBOARD_UI);
                     }
                 });
