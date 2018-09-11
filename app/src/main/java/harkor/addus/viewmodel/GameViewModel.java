@@ -41,6 +41,7 @@ public class GameViewModel extends BaseObservable implements IGame{
         this.points = points;
         setPointext(""+points);
     }
+
     @Bindable
     public String getPointext() {
         return pointext;
@@ -50,20 +51,10 @@ public class GameViewModel extends BaseObservable implements IGame{
         notifyPropertyChanged(BR.pointext);
     }
 
-
     @Bindable
     public ObservableArrayList<Square> getSquares() {
         return squares;
     }
-
-    /*
-    public void setSquares(int doubled,int generated) {
-        GameViewModel.squares.get(doubled).addIs(GameViewModel.squares.get(doubled),GameViewModel.squares.get(generated));
-        notifyPropertyChanged(BR.squares);
-    }
-    */
-
-
 
     @Bindable
     public String getTimer(){
@@ -95,20 +86,16 @@ public class GameViewModel extends BaseObservable implements IGame{
     public void onBackClick(View v){
         if (backClickTwice) {
             logic.count.cancel();
-            iFragMenager.goMenu();
+            iFragMenager.goMenu(false);
         }
         this.backClickTwice = true;
-        //Toast.makeText(this, R.string.two_tap_to_exit, Toast.LENGTH_SHORT).show();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 backClickTwice=false;
             }
         }, 2000);
-
-
     }
-
 
     @BindingAdapter("load_image")
     public static void loadImage(ImageView view,Square square) {
@@ -119,13 +106,11 @@ public class GameViewModel extends BaseObservable implements IGame{
         logic.count.cancel();
     }
 
-
-
-    /////////INTERFACE IGAME IMPLEMEMTATION
     @Override
     public void setterSquare(int id,Square square){
         squares.set(id,square);
     }
+
     @Override
     public void nextSecond(){
         setTime(--time);
@@ -135,6 +120,7 @@ public class GameViewModel extends BaseObservable implements IGame{
     public Square getSquare(int id) {
         return squares.get(id);
     }
+
     @Override
     public void addPoints(int value){
         if(value<0){

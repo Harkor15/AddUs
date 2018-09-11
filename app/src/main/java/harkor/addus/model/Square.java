@@ -114,7 +114,19 @@ public class Square {
                     drawable= R.drawable.square322;
                 }
             }break;
+            case 64: if(color==1){
+                if(clicked){
+                    drawable= R.drawable.square641c;
+                }else{
+                    drawable= R.drawable.square641;
+                }
+            }else{
+                if(clicked){
+                    drawable= R.drawable.square642c;
+                }else{
+                    drawable= R.drawable.square642;
+                }
+            }break;
         }
-        Log.i("getImage","check");
     }
 }

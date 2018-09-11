@@ -23,6 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import butterknife.ButterKnife;
@@ -35,9 +36,12 @@ import harkor.addus.interfaces.IFragMenager;
 public class MainActivity extends AppCompatActivity implements IFragMenager{
     boolean doubleBackToExitPressedOnce = false;
     final int RC_SIGN_IN=9876;
+    private static final int RC_ACHIEVEMENT_UI = 9003;
+    private static final int RC_LEADERBOARD_UI = 9004;
     private GoogleSignInClient mGoogleSignInClient;
     GoogleSignInAccount signedInAccount;
     MenuFragment menuFragment;
+    Boolean played=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +52,46 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         ButterKnife.bind(this);
         mGoogleSignInClient = GoogleSignIn.getClient(this,
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN).build());
+        if(!isSignedIn()){
+            startSignInIntent();
+        }
+        goMenu(false);
 
-        goMenu();
-        Log.i("Addus logedin?",isSignedIn()+"");
     }
+    private void leaderboardAndAchevemenents(){
+        SharedP sharedP=new SharedP(getApplicationContext());
+        int best=sharedP.getBest();
+        Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                .submitScore(getString(R.string.leaderboard_standard_mode), best);
+        if(played){
+            played=false;
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .unlock(getString(R.string.achievement_first_play));
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .increment(getString(R.string.achievement_10_games),1);
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .increment(getString(R.string.achievement_50_games),1);
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .increment(getString(R.string.achievement_100_games),1);
+        }
+        if(best>=400){
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .unlock(getString(R.string.achievement_400_points));
+            if(best>=500){
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                        .unlock(getString(R.string.achievement_500_points));
+                if(best>=600){
+                    Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                            .unlock(getString(R.string.achievement_600_points));
+                    if(best>=700){
+                        Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                                .unlock(getString(R.string.achievement_700_points));
+                    }
+                }
+            }
+        }
+    }
+
     @Override
     public boolean isSignedIn() {
         return GoogleSignIn.getLastSignedInAccount(this) != null;
@@ -59,8 +99,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
 
     @Override
     public void logButtonClick() {
-        //TODO: LOG IN OR LOG OUT
-        if(isSignedIn()){//LOG OUT
+        if(isSignedIn()){
             GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
                     GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
             signInClient.signOut().addOnCompleteListener(this,
@@ -73,13 +112,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         }else{//LOG IN
             startSignInIntent();
         }
-
-
-    }
-
-    @Override
-    public void showRanking() {
-        //TODO: Ranking show
     }
 
     private void signInSilently() {
@@ -90,13 +122,11 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
                     @Override
                     public void onComplete(@NonNull Task<GoogleSignInAccount> task) {
                         if (task.isSuccessful()) {
-                            // The signed in account is stored in the task's result.
                             signedInAccount = task.getResult();
-                            GamesClient gamesClient = Games.getGamesClient(MainActivity.this, GoogleSignIn.getLastSignedInAccount(getApplicationContext()));
+                            GamesClient gamesClient = Games.getGamesClient(MainActivity.this,
+                                    GoogleSignIn.getLastSignedInAccount(getApplicationContext()));
                             gamesClient.setViewForPopups(findViewById(R.id.gps_popup));
                             logedIn();
-                        } else {
-
                         }
                     }
                 });
@@ -105,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     protected void onResume() {
         super.onResume();
         signInSilently();
+
     }
     private void startSignInIntent() {
         GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
@@ -112,7 +143,8 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         Intent intent = signInClient.getSignInIntent();
         startActivityForResult(intent, RC_SIGN_IN);
         if(isSignedIn()){
-            GamesClient gamesClient = Games.getGamesClient(MainActivity.this, GoogleSignIn.getLastSignedInAccount(getApplicationContext()));
+            GamesClient gamesClient = Games.getGamesClient(MainActivity.this,
+                    GoogleSignIn.getLastSignedInAccount(getApplicationContext()));
             gamesClient.setViewForPopups(findViewById(R.id.gps_popup));
         }
     }
@@ -123,7 +155,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
-                // The signed in account is stored in the result.
                 signedInAccount = result.getSignInAccount();
                 GamesClient gamesClient = Games.getGamesClient(MainActivity.this,
                         GoogleSignIn.getLastSignedInAccount(getApplicationContext()));
@@ -133,7 +164,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
                 String message = result.getStatus().getStatusMessage();
                 if (message == null || message.isEmpty()) {
                     message = getString(R.string.signin_other_error);
-                    //Log.i("addus",result+"");
                 }
                 new AlertDialog.Builder(this).setMessage(message)
                         .setNeutralButton(android.R.string.ok, null).show();
@@ -141,15 +171,11 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         }
     }
     void logedIn(){
-        //imageView.setImageResource(R.drawable.log_out);
         menuFragment.setForIn();
     }
     void logedOut(){
-        //imageView.setImageResource(R.drawable.log_in);
         menuFragment.setForOut();
     }
-
-
 
     @Override
     public void onBackPressed() {
@@ -168,11 +194,15 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     }
 
     @Override
-    public void goMenu() {
+    public void goMenu(Boolean play) {
         menuFragment = new MenuFragment ();
+        played=play;
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame, menuFragment);
         transaction.commit();
+        if(isSignedIn()){
+            leaderboardAndAchevemenents();
+        }
     }
 
     @Override
@@ -187,7 +217,11 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     }
 
     @Override
-    public void goGame() {
+    public void goGame(Boolean play) {
+        played=play;
+        if(isSignedIn()&&play){
+            leaderboardAndAchevemenents();
+        }
         GameFragment newFragment = new GameFragment ();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame, newFragment);
@@ -198,7 +232,38 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     public void showResult() {
         SharedP sharedP=new SharedP(getApplicationContext());
         int res=sharedP.getBest();
-        //Toast.makeText(getApplicationContext(),res+"",Toast.LENGTH_SHORT);
         menuFragment.showbestResult(res);
     }
+
+    @Override
+    public void showAchievements() {
+        if (isSignedIn()){
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                    .getAchievementsIntent()
+                    .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                        @Override
+                        public void onSuccess(Intent intent) {
+                            startActivityForResult(intent, RC_ACHIEVEMENT_UI);
+                        }
+                    });
+        }
+    }
+
+    @Override
+    public void showRanking() {
+        if(isSignedIn()){
+            showLeaderboard();
+        }
+    }
+    private void showLeaderboard() {
+        Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                .getLeaderboardIntent(getString(R.string.leaderboard_standard_mode))
+                .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                    @Override
+                    public void onSuccess(Intent intent) {
+                        startActivityForResult(intent, RC_LEADERBOARD_UI);
+                    }
+                });
+    }
+
 }

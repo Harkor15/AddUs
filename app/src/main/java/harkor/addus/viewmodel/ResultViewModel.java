@@ -13,11 +13,13 @@ public class ResultViewModel extends BaseObservable {
     String points;
     IFragMenager iFragMenager;
     IResult iResult;
+    long start;
     public ResultViewModel(int points, IFragMenager iFragMenager, IResult iResult){
         this.pointsInt=points;
         this.points=points+"";
         this.iFragMenager=iFragMenager;
         this.iResult=iResult;
+        start=System.currentTimeMillis();
 
     }
     @Bindable
@@ -26,10 +28,15 @@ public class ResultViewModel extends BaseObservable {
     }
 
     public void toMenu(View v){
-        iFragMenager.goMenu();
+        if(System.currentTimeMillis()-start>750){
+            iFragMenager.goMenu(true);
+        }
+
     }
     public void toGame(View v){
-        iFragMenager.goGame();
+        if(System.currentTimeMillis()-start>750) {
+            iFragMenager.goGame(true);
+        }
     }
 
     public void goCheck(){

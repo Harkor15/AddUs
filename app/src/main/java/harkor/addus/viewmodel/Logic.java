@@ -20,14 +20,11 @@ public class Logic{
 
         @Override
         public void onTick(long l) {
-            //if(gameViewModel==null){gameViewModel=GameViewModel.getInstance();}
-            Log.i("Tick"," ");
             setTime();
         }
 
         @Override
         public void onFinish() {
-        Log.i("Game Over!","yes");
         iGame.timeout();
         }
     };
@@ -36,16 +33,9 @@ public class Logic{
         this.iGame=iGame;
         this.iSoundsPlay=iSoundsPlay;
         count.start();
-        if(iSoundsPlay==null){
-            Log.i("AddUs","nullSoundsPlayInterface");
-        }else{
-            Log.i("AddUs","ISOUNDS OK!");
         }
 
-    }
-
     public void click(int id){
-        Log.i("Clicked:",id+"");
         Square square=iGame.getSquare(id);
         if(isClicked){
             if(clickedId==id){

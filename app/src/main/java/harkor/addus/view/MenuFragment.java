@@ -25,12 +25,10 @@ import harkor.addus.R;
 import harkor.addus.databinding.FragmentMenuBinding;
 
 import harkor.addus.interfaces.IFragMenager;
-import harkor.addus.view.GameFragment;
-import harkor.addus.viewmodel.MainViewModel;
+
 import harkor.addus.viewmodel.MenuViewModel;
 
 public class MenuFragment extends Fragment{
-    //IFragMenager iFragMenager;
     MenuViewModel menuViewModel;
     @BindView(R.id.image_sign_inout)
     ImageView buttonInOut;

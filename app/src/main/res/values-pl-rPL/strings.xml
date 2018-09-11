@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dodaj nas</string>
+    <string name="two_tap_to_exit">Kliknij jeszcze raz aby wyjść</string>
+    <string name="signin_other_error">Logowanie nieudane!</string>
+    <string name="back">Wróć</string>
+    <string name="menu">Menu</string>
+    <string name="start_game">Rozpocznij grę</string>
+    <string name="restart">Restart</string>
+    <string name="record">NOWY REKORD!</string>
+    <string name="empty">" "</string>
+    <string name="my_best">Mój najlepszy wynik</string>
+</resources>

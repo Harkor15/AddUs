@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 Google Play game services IDs.
-Save this file as res/values/games-games-ids.xml in your project.
+Save this file as res/values/games-ids.xml in your project.
 -->
 <resources>
     <!-- app_id -->
     <string name="app_id" translatable="false">1022128350838</string>
     <!-- package_name -->
     <string name="package_name" translatable="false">harkor.addus</string>
+    <!-- achievement First play! -->
+    <string name="achievement_first_play" translatable="false">CgkI9szj3N8dEAIQBQ</string>
+    <!-- achievement 10 games! -->
+    <string name="achievement_10_games" translatable="false">CgkI9szj3N8dEAIQCA</string>
+    <!-- achievement 50 games! -->
+    <string name="achievement_50_games" translatable="false">CgkI9szj3N8dEAIQCQ</string>
+    <!-- achievement 100 games! -->
+    <string name="achievement_100_games" translatable="false">CgkI9szj3N8dEAIQCg</string>
+    <!-- achievement 400 points! -->
+    <string name="achievement_400_points" translatable="false">CgkI9szj3N8dEAIQCw</string>
+    <!-- achievement 500 points! -->
+    <string name="achievement_500_points" translatable="false">CgkI9szj3N8dEAIQDA</string>
+    <!-- achievement 600 points -->
+    <string name="achievement_600_points" translatable="false">CgkI9szj3N8dEAIQDQ</string>
+    <!-- achievement 700 points! -->
+    <string name="achievement_700_points" translatable="false">CgkI9szj3N8dEAIQDg</string>
     <!-- leaderboard Standard mode -->
     <string name="leaderboard_standard_mode" translatable="false">CgkI9szj3N8dEAIQAw</string>
 </resources>
