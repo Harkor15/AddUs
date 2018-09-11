@@ -1,4 +1,4 @@
-package harkor.addus.view;
+package harkor.addus;
 
 import android.app.Activity;
 import android.content.Context;

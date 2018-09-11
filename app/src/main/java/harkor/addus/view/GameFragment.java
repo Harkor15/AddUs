@@ -1,9 +1,6 @@
 package harkor.addus.view;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -15,6 +12,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import harkor.addus.R;
+import harkor.addus.SoundsPlayer;
 import harkor.addus.databinding.FragmentGameBinding;
 import harkor.addus.interfaces.IFragMenager;
 import harkor.addus.interfaces.ISoundsPlay;
@@ -48,18 +46,11 @@ public class GameFragment extends Fragment implements ISoundsPlay{
 
         return view;
     }
-/*
-    @Override
-    public void onDestroy() {
-        gameViewModel.cancelTimer();
-        super.onDestroy();
-    }
-*/
+
     @Override
     public void onPause() {
         gameViewModel.cancelTimer();
         super.onPause();
-        Log.i("AddUs","onPause");
     }
 
     @Override
@@ -68,9 +59,7 @@ public class GameFragment extends Fragment implements ISoundsPlay{
             iFragMenager.goResult(gameViewModel.points);
         }else{
         created=false;
-            Log.i("AddUs","onResume");
     }
-
         super.onResume();
     }
 

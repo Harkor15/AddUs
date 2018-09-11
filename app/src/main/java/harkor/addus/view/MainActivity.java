@@ -90,10 +90,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
                 }
             }
         }
-
-
     }
-
 
     @Override
     public boolean isSignedIn() {
@@ -102,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
 
     @Override
     public void logButtonClick() {
-        if(isSignedIn()){//LOG OUT
+        if(isSignedIn()){
             GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
                     GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
             signInClient.signOut().addOnCompleteListener(this,
@@ -115,10 +112,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         }else{//LOG IN
             startSignInIntent();
         }
-
-
     }
-
 
     private void signInSilently() {
         GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
@@ -128,9 +122,9 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
                     @Override
                     public void onComplete(@NonNull Task<GoogleSignInAccount> task) {
                         if (task.isSuccessful()) {
-                            // The signed in account is stored in the task's result.
                             signedInAccount = task.getResult();
-                            GamesClient gamesClient = Games.getGamesClient(MainActivity.this, GoogleSignIn.getLastSignedInAccount(getApplicationContext()));
+                            GamesClient gamesClient = Games.getGamesClient(MainActivity.this,
+                                    GoogleSignIn.getLastSignedInAccount(getApplicationContext()));
                             gamesClient.setViewForPopups(findViewById(R.id.gps_popup));
                             logedIn();
                         }
@@ -149,7 +143,8 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         Intent intent = signInClient.getSignInIntent();
         startActivityForResult(intent, RC_SIGN_IN);
         if(isSignedIn()){
-            GamesClient gamesClient = Games.getGamesClient(MainActivity.this, GoogleSignIn.getLastSignedInAccount(getApplicationContext()));
+            GamesClient gamesClient = Games.getGamesClient(MainActivity.this,
+                    GoogleSignIn.getLastSignedInAccount(getApplicationContext()));
             gamesClient.setViewForPopups(findViewById(R.id.gps_popup));
         }
     }
@@ -181,8 +176,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     void logedOut(){
         menuFragment.setForOut();
     }
-
-
 
     @Override
     public void onBackPressed() {
@@ -226,7 +219,9 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     @Override
     public void goGame(Boolean play) {
         played=play;
-        leaderboardAndAchevemenents();
+        if(isSignedIn()&&play){
+            leaderboardAndAchevemenents();
+        }
         GameFragment newFragment = new GameFragment ();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame, newFragment);
@@ -237,7 +232,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     public void showResult() {
         SharedP sharedP=new SharedP(getApplicationContext());
         int res=sharedP.getBest();
-        //Toast.makeText(getApplicationContext(),res+"",Toast.LENGTH_SHORT);
         menuFragment.showbestResult(res);
     }
 
