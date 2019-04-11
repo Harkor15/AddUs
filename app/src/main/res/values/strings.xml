@@ -12,4 +12,5 @@
     <string name="record">NEW RECORD!</string>
     <string name="empty" />
     <string name="my_best">My best result</string>
+    <string name="privacy_policy">Privacy policy</string>
 </resources>

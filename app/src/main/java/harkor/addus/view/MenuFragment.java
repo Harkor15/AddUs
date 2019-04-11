@@ -1,9 +1,11 @@
 package harkor.addus.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.Bindable;
 import android.databinding.DataBindingUtil;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -32,7 +34,12 @@ public class MenuFragment extends Fragment{
     MenuViewModel menuViewModel;
     @BindView(R.id.image_sign_inout)
     ImageView buttonInOut;
-
+    @OnClick(R.id.privacy_policy)
+    void showPrivacyPolicy(){
+        Intent intent=new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://www.freeprivacypolicy.com/privacy/view/c4fbc20540a7365b768d06ea3e8ba805"));
+        startActivity(intent);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

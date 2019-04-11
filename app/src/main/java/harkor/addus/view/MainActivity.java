@@ -2,6 +2,7 @@ package harkor.addus.view;
 
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
@@ -9,9 +10,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -27,6 +30,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import harkor.addus.R;
 import harkor.addus.SharedP;
 import harkor.addus.interfaces.IFragMenager;
@@ -42,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
     GoogleSignInAccount signedInAccount;
     MenuFragment menuFragment;
     Boolean played=false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         mGoogleSignInClient = GoogleSignIn.getClient(this,
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN).build());
         if(!isSignedIn()){
