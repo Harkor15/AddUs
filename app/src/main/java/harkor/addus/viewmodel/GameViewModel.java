@@ -1,23 +1,20 @@
 package harkor.addus.viewmodel;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.databinding.BindingAdapter;
-import android.databinding.ObservableArrayList;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.ObservableArrayList;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 
 import harkor.addus.BR;
-import harkor.addus.R;
 import harkor.addus.interfaces.IFragMenager;
 import harkor.addus.interfaces.IGame;
 import harkor.addus.interfaces.ISoundsPlay;
 import harkor.addus.model.Square;
-import harkor.addus.view.MainActivity;
 
 public class GameViewModel extends BaseObservable implements IGame{
     IFragMenager iFragMenager;

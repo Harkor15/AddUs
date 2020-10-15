@@ -1,24 +1,18 @@
 package harkor.addus.view;
 
-import android.content.Context;
 import android.content.Intent;
-import android.databinding.Bindable;
-import android.databinding.DataBindingUtil;
-import android.media.Image;
+import androidx.databinding.Bindable;
+import androidx.databinding.DataBindingUtil;
+
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.gson.Gson;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

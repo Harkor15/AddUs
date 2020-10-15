@@ -1,13 +1,11 @@
 package harkor.addus.viewmodel;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.databinding.BindingAdapter;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
 
-import harkor.addus.R;
+import android.view.View;
+
 import harkor.addus.interfaces.IFragMenager;
 
 public class MenuViewModel extends BaseObservable{
