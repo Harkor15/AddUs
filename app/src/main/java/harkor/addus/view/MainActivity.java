@@ -12,6 +12,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -49,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        loadAd();
         ButterKnife.bind(this);
 
         mGoogleSignInClient = GoogleSignIn.getClient(this,
@@ -58,7 +65,23 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         }
         goMenu(false);
 
+
     }
+
+    private void loadAd(){
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        AdView adView = findViewById(R.id.ad_view);
+//        adView.setAdSize(AdSize.LARGE_BANNER);
+//        adView.setAdUnitId(getResources().getString(R.string.main_banner));
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
+
     private void leaderboardAndAchevemenents(){
         SharedP sharedP=new SharedP(getApplicationContext());
         int best=sharedP.getBest();

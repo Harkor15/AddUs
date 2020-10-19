@@ -79,7 +79,7 @@ public class GameViewModel extends BaseObservable implements IGame{
     public void onClickItem(View v,int id){
         logic.click(id);
     }
-    
+
     public void onBackClick(View v){
         if (backClickTwice) {
             logic.count.cancel();
