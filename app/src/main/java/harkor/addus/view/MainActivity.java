@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -30,7 +29,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-import butterknife.ButterKnife;
 import harkor.addus.R;
 import harkor.addus.SharedP;
 import harkor.addus.interfaces.IFragMenager;
@@ -56,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         loadAd();
-        ButterKnife.bind(this);
 
         mGoogleSignInClient = GoogleSignIn.getClient(this,
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN).build());

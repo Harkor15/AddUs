@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import harkor.addus.R;
 import harkor.addus.SoundsPlayer;
 import harkor.addus.databinding.FragmentGameBinding;
@@ -19,12 +17,12 @@ import harkor.addus.interfaces.ISoundsPlay;
 import harkor.addus.viewmodel.GameViewModel;
 
 public class GameFragment extends Fragment implements ISoundsPlay{
-    @BindView(R.id.text_time)
     TextView textTime;
     GameViewModel gameViewModel;
     SoundsPlayer soundsPlayer;
     IFragMenager iFragMenager;
     boolean created=true;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FragmentGameBinding binding = DataBindingUtil.inflate(
@@ -35,7 +33,7 @@ public class GameFragment extends Fragment implements ISoundsPlay{
         );
         created=true;
         View view = binding.getRoot();
-        ButterKnife.bind(this,view);
+        textTime=view.findViewById(R.id.text_time);
         soundsPlayer=new SoundsPlayer(getContext());
         iFragMenager=(IFragMenager)getActivity();
         ISoundsPlay iSoundsPlay=this;

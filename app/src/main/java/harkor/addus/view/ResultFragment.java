@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import harkor.addus.R;
 import harkor.addus.SharedP;
 import harkor.addus.databinding.FragmentResultBinding;
@@ -20,7 +18,6 @@ import harkor.addus.viewmodel.ResultViewModel;
 
 
 public class ResultFragment extends Fragment implements IResult{
-    @BindView(R.id.text_record)
     TextView record;
     SharedP sharedP;
     int points;
@@ -39,7 +36,7 @@ public class ResultFragment extends Fragment implements IResult{
         IFragMenager iFragMenager=(IFragMenager)getActivity();
         ResultViewModel resultViewModel=new ResultViewModel(points,iFragMenager,this);
         binding.setResultViewModel(resultViewModel);
-        ButterKnife.bind(this,view);
+        record=view.findViewById(R.id.text_record);
         sharedP=new SharedP(getContext());
         resultViewModel.goCheck();
         return view;
