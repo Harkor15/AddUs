@@ -12,11 +12,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
+/*import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;*/
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        loadAd();
+        //loadAd();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this,
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN).build());
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
 
     }
 
-    private void loadAd(){
+/*    private void loadAd(){
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements IFragMenager{
 //        adView.setAdUnitId(getResources().getString(R.string.main_banner));
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
-    }
+    }*/
 
     private void leaderboardAndAchevemenents(){
         SharedP sharedP=new SharedP(getApplicationContext());
